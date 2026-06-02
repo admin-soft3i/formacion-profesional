@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/sidebar/sidebar.css"],
+  "sourcesContent": [".main {\n\theight: 100vh; \n\toverflow-y: auto;\n\tmargin-left: 10%;\n}"],
+  "mappings": ";AAAA,CAAC;AACA,UAAQ;AACR,cAAY;AACZ,eAAa;AACd;",
+  "names": []
+}
