@@ -4,7 +4,7 @@ body {
 	/* background-color: #f0f2f5; */
 
 	/* OPCIÓN 2: Imagen de fondo */
-	background-image: url('https://admin-soft3i.github.io/formacion-profesional/assets/img/bg.jpg'); /* Cambia esto por la ruta de tu imagen */
+	background-image: url('assets/img/bg.jpg'); /* Cambia esto por la ruta de tu imagen */
 	background-size: contain;          /* Hace que la imagen cubra toda la pantalla */
 	background-position: right;     /* Centra la imagen */
 	background-repeat: repeat;    /* Evita que la imagen se repita como mosaico */
