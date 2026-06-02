@@ -1,1 +1,0 @@
-# Formación profesional - Producción.
