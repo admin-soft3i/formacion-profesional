@@ -8,8 +8,8 @@
 			{ "id": 2, "name": "Resumen extenso", "file": "assets/doc/tema_1_extenso.pdf" }
 		],
 		"tests": [
-			{ "id": 1, "name": "Test 1", "url": "subject-test" }, 
-			{ "id": 2, "name": "Test 2", "url": "subject-test" }
+			{ "id": 1, "name": "Test Final 1", "url": "subject-test" }, 
+			{ "id": 2, "name": "Test Final 2", "url": "subject-test" }
 		]
 	},
 	{

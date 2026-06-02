@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/styles.css"],
-  "sourcesContent": ["/* You can add global styles to this file, and also import other style files */\nbody {\n\t/* OPCI\u00D3N 1: Color s\u00F3lido (descomenta si prefieres color) */\n\t/* background-color: #f0f2f5; */\n\n\t/* OPCI\u00D3N 2: Imagen de fondo */\n\tbackground-image: url('/assets/img/bg.jpg'); /* Cambia esto por la ruta de tu imagen */\n\tbackground-size: contain;          /* Hace que la imagen cubra toda la pantalla */\n\tbackground-position: right;     /* Centra la imagen */\n\tbackground-repeat: repeat;    /* Evita que la imagen se repita como mosaico */\n\tbackground-attachment: fixed;    /* Deja el fondo fijo al hacer scroll */\n\n\t/* Estilos extra para que el texto se vea bien */\n\tfont-family: Arial, sans-serif;\n\tcolor: #333;\n\tmargin: 0;\n\tpadding: 0;\n}\n\n/* Una caja de contenido opcional para que tu texto sea legible sobre el fondo */\n.contenido {\n\tbackground-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */\n\tpadding: 30px;\n\tborder-radius: 8px;\n\tmax-width: 600px;\n\tmargin: 50px auto;\n}"],
-  "mappings": ";AACA;AAKC,oBAAkB;AAClB,mBAAiB;AACjB,uBAAqB;AACrB,qBAAmB;AACnB,yBAAuB;AAGvB,eAAa,KAAK,EAAE;AACpB,SAAO;AACP,UAAQ;AACR,WAAS;AACV;AAGA,CAAC;AACA,oBAAkB,KAAK,GAAG,EAAE,GAAG,EAAE,GAAG,EAAE;AACtC,WAAS;AACT,iBAAe;AACf,aAAW;AACX,UAAQ,KAAK;AACd;",
-  "names": []
-}

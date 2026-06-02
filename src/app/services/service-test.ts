@@ -54,6 +54,7 @@ export interface questions {
 	question: string;
 	response: string;
 	weighing: number;
+	type: string;
 	value: string;
 	selections: selections[];
 }
@@ -122,7 +123,7 @@ export class ServiceTest {
 	}	
 	
 	// Método que retorna un Observable con el array de los contenidos de los tests
-	getSubjectTests(testId?: number): Observable<SubjectTest[]> {
+	getSubjectTest(testId?: number): Observable<SubjectTest[]> {
 		return this.http.get<SubjectTest[]>(this.jsonTests).pipe(
 			map((subjectTests: SubjectTest[]) => {
 				if (!testId) return subjectTests;

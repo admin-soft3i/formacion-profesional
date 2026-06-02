@@ -27,7 +27,8 @@ export class Contents implements OnInit {
 	rcontent = computed(() => {
 		const id = this.issueId();
 		if (!id) return undefined;
-		return this.listContents().find(c => c.issue_id === Number(id));
+		const contents = this.listContents().find(c => c.issue_id === Number(id));
+		return contents;
 	});
 	
 	/**

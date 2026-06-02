@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"issue_id": 1, 
-		"title": "Test final 1",
+		"title": "Test Final 1",
 		"content": "Anatomofisiología y Patología Básica",
 		"questions": [
 			{
@@ -10,6 +10,7 @@
 				"question": "¿Qué sistema se encarga principalmente de coordinar funciones mediante hormonas?",
 				"response": "a",
 				"weighing": 1,
+				"type": "Punto",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Nervioso" },
@@ -23,6 +24,7 @@
 				"question": "Una estructura situada más cerca de la línea media del cuerpo se denomina:",
 				"response": "c",
 				"weighing": 1,
+				"type": "Punto",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Lateral" },
@@ -36,6 +38,7 @@
 				"question": "¿Cuál es la unidad funcional del riñón?",
 				"response": "a",
 				"weighing": 1,
+				"type": "Punto",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Nefrona" },
@@ -49,6 +52,7 @@
 				"question": "¿Qué órgano produce la bilis?",
 				"response": "d",
 				"weighing": 1,
+				"type": "Punto",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Páncreas" },
@@ -62,6 +66,7 @@
 				"question": "¿Qué células sanguíneas participan principalmente en la coagulación?",
 				"response": "b",
 				"weighing": 1,
+				"type": "Punto",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Eritrocitos" },
@@ -84,6 +89,7 @@
 				"question": "¿Cuál de las siguientes estructuras pertenece al sistema nervioso periférico?",
 				"response": "a",
 				"weighing": 2,
+				"type": "%",
 				"value": "",
 				"selections": [
 					{ "id": "a", "option": "Cerebro" },

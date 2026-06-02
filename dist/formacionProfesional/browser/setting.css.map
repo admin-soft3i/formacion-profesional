@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/pages/setting/setting.css"],
-  "sourcesContent": [".sidebar {\n\twidth: 280px;\n\theight: 100vh;\n\ttransition: width 0.3s ease;\n\toverflow-x: hidden;\n\twhite-space: nowrap;\n\n\t/* Estilo cuando est\u00E1 colapsado */\n\t&.collapsed {\n\t\twidth: 85px;\n\n\t\t.brand-text, .link-text {\n\t\t\topacity: 0;\n\t\t\tdisplay: none;\n\t\t}\n\n\t\t.logo-container, .nav-link {\n\t\t\tjustify-content: center;\n\t\t}\n\t\t\n\t\t.nav-link i {\n\t\t\tmargin-right: 0 !important;\n\t\t}\n\t}\n}\n\n/* Suavizado para los textos al desaparecer */\n.brand-text, .link-text {\n  \ttransition: opacity 0.2s ease;\n}\n\n.nav-link {\n\tcursor: pointer;\n\t\n\t&:hover {\n\t\tbackground-color: rgba(255, 255, 255, 0.1);\n\t}\n\t\n\t&.active {\n\t\tbackground-color: var(--bs-primary) !important;\n\t}\n}\n\n.main {\n\theight: 100vh; \n\toverflow-y: auto;\n}"],
-  "mappings": ";AAAA,CAAC;AACA,SAAO;AACP,UAAQ;AACR,cAAY,MAAM,KAAK;AACvB,cAAY;AACZ,eAAa;AAmBd;AAxBA,CAAC,OAQC,CAAC;AACD,SAAO;AAcR;AAvBD,CAAC,OAQC,CAAC,UAGD,CAAC;AAXH,CAAC,OAQC,CAAC,UAGY,CAAC;AACb,WAAS;AACT,WAAS;AACV;AAdF,CAAC,OAQC,CAAC,UAQD,CAAC;AAhBH,CAAC,OAQC,CAAC,UAQgB,CAAC;AACjB,mBAAiB;AAClB;AAlBF,CAAC,OAQC,CAAC,UAYD,CAJkB,SAIR;AACT,gBAAc;AACf;AAKF,CAhBG;AAgBU,CAhBG;AAiBb,cAAY,QAAQ,KAAK;AAC5B;AAEA,CAfoB;AAgBnB,UAAQ;AAST;AAVA,CAfoB,QAkBlB;AACA,oBAAkB,KAAK,GAAG,EAAE,GAAG,EAAE,GAAG,EAAE;AACvC;AALD,CAfoB,QAsBlB,CAAC;AACD,oBAAkB,IAAI;AACvB;AAGD,CAAC;AACA,UAAQ;AACR,cAAY;AACb;",
-  "names": []
-}

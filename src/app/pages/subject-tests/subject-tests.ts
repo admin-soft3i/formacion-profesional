@@ -16,16 +16,26 @@ export class SubjectTests implements OnInit {
 	protected listSubjectTest = signal<SubjectTest[]>([]);
 	
 	ngOnInit(): void {
-		this.serviceTest.getSubjectTests().subscribe({
+		this.serviceTest.getSubjectTest().subscribe({
 			next: (datos) => this.listSubjectTest.set(datos),
 			error: (err) => console.log('Error cargando JSON: ', err)
 		});
 	}
 	
 	rsubjectTest = computed(() => {
-		const id = this.testId;
+		const id = this.testId();
 		if (!id) return undefined;
-		const response = this.listSubjectTest().find(st => st.id === Number(id));
-		return response;
+		const subjectTests = this.listSubjectTest().find(st => st.id === Number(id));
+		return subjectTests;
 	});
+	
+	/**
+	 * Obtiene el contenido de la asignatura
+	 * @param testId
+	 * @returns 
+	 */
+	getSubjectTest(testId: number | string | undefined): string {
+		const content = this.listSubjectTest().find(st => st.id === Number(testId));
+		return content ? content.content : 'Asignatura sin contenido';
+	}
 }
