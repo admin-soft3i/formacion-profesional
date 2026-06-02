@@ -1,0 +1,5 @@
+.main {
+	height: 100vh; 
+	overflow-y: auto;
+	margin-left: 10%;
+}

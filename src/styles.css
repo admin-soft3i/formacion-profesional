@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+	/* OPCIÓN 1: Color sólido (descomenta si prefieres color) */
+	/* background-color: #f0f2f5; */
+
+	/* OPCIÓN 2: Imagen de fondo */
+	background-image: url('/assets/img/bg.jpg'); /* Cambia esto por la ruta de tu imagen */
+	background-size: contain;          /* Hace que la imagen cubra toda la pantalla */
+	background-position: right;     /* Centra la imagen */
+	background-repeat: repeat;    /* Evita que la imagen se repita como mosaico */
+	background-attachment: fixed;    /* Deja el fondo fijo al hacer scroll */
+
+	/* Estilos extra para que el texto se vea bien */
+	font-family: Arial, sans-serif;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+/* Una caja de contenido opcional para que tu texto sea legible sobre el fondo */
+.contenido {
+	background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
+	padding: 30px;
+	border-radius: 8px;
+	max-width: 600px;
+	margin: 50px auto;
+}

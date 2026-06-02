@@ -1,0 +1,42 @@
+<section class="text-muted p-3 bg-white bg-opacity-75 m-5 rounded">
+    <div class="container">
+        <div class="row">
+			<h2 class="border-bottom border-light pb-1">
+				Asignatura:
+				@if (listaIssues().length > 0) {
+					<span class="fw-bold text-success">{{ getSubjectName(listaIssues()[0].subject_id) }}</span>
+				} @else {
+					<span class="fw-bold text-success">Sin temas asociados.</span>
+				}
+			</h2>
+			<h4 class="border-bottom border-light pb-1">
+				Curso 1º.
+				@if (listaIssues().length > 0) {
+					<span>{{ getCourseName(listaIssues()[0].course_id) }}</span>
+				} @else {
+					<span>Sin temas asociados.</span>
+				}
+			</h4>
+			<div class="col-lg-12 d-flex border-bottom border-1 border-light mb-2 mt-4">
+				<h4>Listado de temas.</h4>
+			</div>
+            <div class="col-lg-12">
+				<table class="table table-striped">
+					<tbody>
+						@for (issue of listaIssues(); track issue.id) {
+							<tr>
+								<td>{{ issue.id }}.</td>
+								<td class="col-9">{{ issue.name }}</td>
+								<td class="text-end col-3">
+									<a [routerLink]="['/contents', issue.id, issue.name]" class="btn btn-sm btn-outline-secondary me-3 rounded-pill">
+										<i class="bi bi-book me-2 fs-6"></i>Contenido
+									</a>
+								</td>
+							</tr>
+						}
+					</tbody>					
+				</table>
+            </div>
+        </div>
+    </div>
+</section>
