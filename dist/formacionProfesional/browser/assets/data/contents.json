@@ -1,0 +1,29 @@
+[
+	{
+		"id": 1,
+		"issue_id": 1, 
+		"content": "La organización general del organismo humano es una estructura jerárquica de una complejidad asombrosa. Para entender cómo funciona el cuerpo, debemos visualizarlo como un sistema organizado en diferentes niveles de complejidad, donde cada nivel depende por completo del anterior.",
+		"attachments": [
+			{ "id": 1, "name": "Resumen corto", "file": "assets/doc/tema_1_corto.pdf" }, 
+			{ "id": 2, "name": "Resumen extenso", "file": "assets/doc/tema_1_extenso.pdf" }
+		],
+		"tests": [
+			{ "id": 1, "name": "Test Final 1", "url": "subject-test" }, 
+			{ "id": 2, "name": "Test Final 2", "url": "subject-test" }
+		]
+	},
+	{
+		"id": 2,
+		"issue_id": 2, 
+		"content": "",
+		"attachments": [],
+		"tests": []
+	},
+	{
+		"id": 3,
+		"issue_id": 3, 
+		"content": "",
+		"attachments": [],
+		"tests": []
+	}	
+]
