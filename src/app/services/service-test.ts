@@ -30,11 +30,15 @@ export interface Issue {
 export interface attachment {
 	id: number;
 	name: string;
+	note: string;
+	icon: string;
 	file: string;
 }
 export interface test {
 	id: number;
 	name: string;
+	note: string;
+	icon: string;
 	url: string;
 }
 export interface Content {

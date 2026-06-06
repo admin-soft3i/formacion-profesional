@@ -2,3 +2,8 @@
 	height: 40px;
 	width: 40px;
 }
+
+/* Deshabilita el guion generado por Bootstrap */
+.blockquote-footer::before {
+    content: none !important;
+}

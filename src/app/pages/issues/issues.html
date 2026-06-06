@@ -1,36 +1,74 @@
-<section class="text-muted p-3 pt-5 rounded-5 bg-white bg-opacity-50 mb-5">
+<section class="text-muted p-3 pt-3 rounded-5 bg-white bg-opacity-75 mb-5">
     <div class="container-fluid">
         <div class="row">
 			<div class="col-lg-12">
 				<div class="row">
-					<div class="col-lg-12">
-						<h4 class="border-bottom border-light pb-1">
-							@if (listIssues().length > 0) {
-								<span>{{ getCourseName(listIssues()[0].course_id) }}.</span>
-							} @else {
-								<span>Sin curso.</span>
-							}
-						</h4>
+					<div class="col-lg-12 mb-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item fw-bold"><a [routerLink]="['/']">Inicio</a></li>
+								<li class="breadcrumb-item fw-bold">
+									<a [routerLink]="['/subjects', listSubjects()[0].course_id]">
+										{{ getCourseName(listSubjects()[0].course_id) }}
+									</a>
+								</li>
+								<li class="breadcrumb-item active fw-bold" aria-current="page">
+									{{ getSubjectName(listSubjects()[0].course_id) }}
+								</li>
+							</ol>
+						</nav>
 					</div>
-					<div class="col-lg-12">
-						<h4 class="border-bottom border-light pb-1">
+					<div class="col-lg-12 mb-3">
+						<button type="button" class="btn btn-outline-success">
+							<i class="bi bi-arrow-left"></i> Volver
+						</button>
+					</div>
+					<div class="col-lg-5 mb-3">
+						<h2 class="pb-1">
 							Asignatura: 
 							@if (listIssues().length > 0) {
 								<span>{{ getSubjectName(listSubjects()[0].course_id) }}.</span>
 							} @else {
 								<span>Sin asignatura.</span>
 							}
-						</h4>
+						</h2>
+						<small>Selecciona un tema para ver su contenido y acceder a los resúmenes y test disponibles</small>
 					</div>
-					<div class="col-lg-12 mb-3">
-						<h2 class="border-bottom border-light pb-1">Temas.</h2>
+					<div class="col-lg-7"></div>
+					<div class="col-lg-7 mb-3 bg-white rounded-5 px-5 py-3">
+						<div class="row">
+							<div class="col-4">
+								<table>
+									<tr>
+										<td><i class="bi bi-book me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+										<td><span class="lead fw-bold">10</span><br><small>Temas</small></td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-4">
+								<table>
+									<tr>
+										<td><i class="bi bi-journal-text me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+										<td><span class="lead fw-bold">20</span><br><small>Test disponibles</small></td>
+									</tr>
+								</table>
+							</div>
+							<div class="col-4">
+								<table>
+									<tr>
+										<td><i class="bi bi-bullseye me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+										<td><span class="lead fw-bold">2</span><br><small>Simulacros finales</small></td>
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>
 					<div class="col-lg-12">
-						<div class="accordion accordion-flush text-success rounded-pill shadow" id="accordionIssues">
+						<div class="accordion accordion-flush text-success bg-transparent rounded-5 shadow" id="accordionIssues">
 							@for (issue of rissues(); track issue.id) {
-								<div class="accordion-item">
-									<h2 class="accordion-header">
-										<button class="accordion-button collapsed text-success-emphasis fw-bold" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
+								<div class="accordion-item rounded-5 bg-transparent">
+									<h2 class="accordion-header rounded-5">
+										<button class="accordion-button collapsed text-success-emphasis fw-bold rounded-5" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
 											<span class="me-3 span-circle bg-success text-white rounded-circle fw-bold text-center pt-2">
 												{{ issue.id }}
 											</span> 
@@ -39,16 +77,19 @@
 									</h2>
 									<div id="collapse-{{issue.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIssues">
 										<div class="accordion-body">
-											<div class="col-lg-12 mb-2 mt-3 h6 ps-5 text-success fw-bold">
+											<div class="col-lg-12 mb-2 h6 px-5 pt-5 text-success fw-bold bg-white rounded-5">
 												@for (attachment of rcontent(issue.id)()?.attachments; track attachment.id) {
-													<div class="d-flex mb-4 ps-5">
-														<div>
-															@if (attachment.id === 1) {
-																<i class="bi bi-book-half me-3 fs-3"></i>
-															} @else {
-																<i class="bi bi-book-fill me-3 fs-3"></i>
-															}
-															{{ attachment.name }}
+													<div class="d-flex px-5">
+														<div class="d-flex">
+															<i class="{{attachment.icon}} me-3 fs-3"></i>
+															<figure>
+																<blockquote class="blockquote">
+																	<p>{{ attachment.name }}</p>
+																</blockquote>
+																<figcaption class="blockquote-footer">
+																	{{ attachment.note }}
+																</figcaption>
+															</figure>
 														</div>
 														<a [href]="attachment.file" target="_blank" rel="noopener noreferrer" class="me-2 ms-auto">
 															Abrir <i class="bi bi-arrow-right fw-bold"></i>
@@ -56,10 +97,17 @@
 													</div>
 												}
 												@for (test of rcontent(issue.id)()?.tests; track test.id) {
-													<div class="d-flex mb-4 ps-5">
-														<div>
-															<i class="bi bi-file-earmark-medical me-3 fs-3"></i>
-															{{ test.name }}
+													<div class="d-flex px-5">
+														<div class="d-flex">
+															<i class="{{test.icon}} me-3 fs-3"></i>
+															<figure>
+																<blockquote class="blockquote">
+																	<p>{{ test.name }}</p>
+																</blockquote>
+																<figcaption class="blockquote-footer">
+																	{{ test.note }}
+																</figcaption>
+															</figure>
 														</div>
 														<a [routerLink]="['/subject-test', test.id]" class="me-2 ms-auto">
 															Iniciar <i class="bi bi-arrow-right fw-bold"></i>

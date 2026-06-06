@@ -25,6 +25,10 @@ export class Subjects implements OnInit {
 			next: (datos) => this.listSubjects.set(datos),
 			error: (err) => console.log('Error cargando JSON: ', err)
 		});
+		this.serviceTest.getCourses().subscribe({
+			next: (datos) => this.listCourses.set(datos),
+			error: (err) => console.log('Error cargando JSON: ', err)
+		});
 	}
 	
 	rsubjects = computed(() => {
@@ -38,8 +42,8 @@ export class Subjects implements OnInit {
 	 * @param courseId
 	 * @returns 
 	 */
-	getCourseName(courseId: number): string {
-		const course = this.listCourses().find(c => c.id === courseId);
+	getCourseName(courseId: number | string | undefined): string {
+		const course = this.listCourses().find(c => c.id === Number(courseId));
 		return course ? course.degree : 'Curso no encontrado';
 	}	
 	

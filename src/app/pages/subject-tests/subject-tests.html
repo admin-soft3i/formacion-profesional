@@ -1,49 +1,74 @@
-<section class="text-muted p-3 bg-white bg-opacity-75 m-5 rounded">
-	<div class="container">
+<section class="text-muted p-3 pt-3 rounded-5 bg-white bg-opacity-75 mb-5">
+	<div class="container-fluid">
         <div class="row">
-			<h2 class="pb-1">{{ rsubjectTest()?.title }}</h2>
-			<div class="d-flex">
-				<h2 class="pb-1">{{ rsubjectTest()?.content }}.</h2>
-				<div class="ms-auto">
-					<button class="btn btn-warning fw-bold shadow">
-						<i class="bi bi-check2-all fs-1"></i> Solucionado
-					</button>
-				</div>
-			</div>
-			
-			<div class="col-lg-8 mb-2 mt-4">
-				<h4 class="mb-3 fw-bold text-success">Preguntas:</h4>
-				<hr class="border-success border border-3">
-			</div>
-			<div class="col-lg-4 mb-2 mt-4 ps-5">
-				<h4 class="mb-3 fw-bold text-success">Respuestas:</h4>
-				<hr class="border-success border border-3">
-			</div>
-				
-			@for (question of rsubjectTest()?.questions; track question.id) {
-				
-				<div class="col-lg-8 border-bottom border-opacity-25 border-2 border-secondary mb-2 mt-4">
-					<h4 class="fw-bold mb-3">{{ question.id }}. {{ question.question }}</h4>
-					@for (selection of question?.selections; track selection.id) {
-						<h5 class="mb-3">{{ selection.id }}). {{ selection.option }}</h5>
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-12 mb-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item fw-bold"><a [routerLink]="['/']">Inicio</a></li>
+								<li class="breadcrumb-item fw-bold">
+									<a [routerLink]="['/subjects', listSubjects()[0].course_id]">
+										{{ getCourseName(listSubjects()[0].course_id) }}
+									</a>
+								</li>
+								<li class="breadcrumb-item active fw-bold" aria-current="page">
+									<a [routerLink]="['/issues', listSubjects()[0].course_id]">
+										{{ getSubjectName(listSubjects()[0].course_id) }}
+									</a>
+								</li>
+								<li class="breadcrumb-item active fw-bold" aria-current="page">
+									{{ rsubjectTest()?.title }}
+								</li>
+							</ol>
+						</nav>
+					</div>
+					
+					<h2 class="pb-1">{{ rsubjectTest()?.title }}</h2>
+					<div class="d-flex">
+						<h2 class="pb-1">{{ rsubjectTest()?.content }}.</h2>
+						<div class="ms-auto">
+							<button class="btn btn-warning fw-bold shadow">
+								<i class="bi bi-check2-all fs-1"></i> Solucionado
+							</button>
+						</div>
+					</div>
+					
+					<div class="col-lg-8 mb-2 mt-4">
+						<h4 class="mb-3 fw-bold text-success">Preguntas:</h4>
+						<hr class="border-success border border-3">
+					</div>
+					<div class="col-lg-4 mb-2 mt-4 ps-5">
+						<h4 class="mb-3 fw-bold text-success">Respuestas:</h4>
+						<hr class="border-success border border-3">
+					</div>
+						
+					@for (question of rsubjectTest()?.questions; track question.id) {
+						
+						<div class="col-lg-8 border-bottom border-opacity-25 border-2 border-secondary mb-2 mt-4">
+							<h4 class="fw-bold mb-3">{{ question.id }}. {{ question.question }}</h4>
+							@for (selection of question?.selections; track selection.id) {
+								<h5 class="mb-3">{{ selection.id }}). {{ selection.option }}</h5>
+							}
+						</div>
+						<div class="col-lg-4 border-bottom border-opacity-25 border-2 border-secondary mb-2 mt-4 ps-5">
+							<h5 class="mb-3">Ponderación o peso: <span class="fw-bold">{{ question.weighing }} {{ question.type }}.</span></h5>
+							<select class="form-select mb-3" aria-label="Seleccione ...">
+								<option selected>Seleccione ...</option>
+								@for (selection of question?.selections; track selection.id) {
+									<option value="{{ selection.id }}">{{ selection.id }}). {{ selection.option }}</option>
+								}
+							</select>
+							<button class="btn btn-outline-danger border-0 shadow">
+								<i class="bi bi-check2"></i> Validar
+							</button>
+						</div>
+						
+					} @empty {
+						<p class="text-muted small">No existen opciones de selección.</p>
 					}
 				</div>
-				<div class="col-lg-4 border-bottom border-opacity-25 border-2 border-secondary mb-2 mt-4 ps-5">
-					<h5 class="mb-3">Ponderación o peso: <span class="fw-bold">{{ question.weighing }} {{ question.type }}.</span></h5>
-					<select class="form-select mb-3" aria-label="Seleccione ...">
-						<option selected>Seleccione ...</option>
-						@for (selection of question?.selections; track selection.id) {
-							<option value="{{ selection.id }}">{{ selection.id }}). {{ selection.option }}</option>
-						}
-					</select>
-					<button class="btn btn-outline-danger border-0 shadow">
-						<i class="bi bi-check2"></i> Validar
-					</button>
-				</div>
-				
-			} @empty {
-				<p class="text-muted small">No existen opciones de selección.</p>
-			}
+			</div>
 		</div>
 	</div>
 	
