@@ -1,0 +1,13 @@
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	100% { transform: translate(0, 0) rotate(0deg); } /* Regresa a su posición original */
+}
+
+.vibrar-hover:hover {
+	animation: shake 0.4s ease-in-out; /* Una animación más fluida */
+	animation-iteration-count: 1;      /* ¡Fijo en 1! Vibra una vez y se detiene */
+}

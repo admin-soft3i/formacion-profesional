@@ -5,8 +5,8 @@ body {
 
 	/* OPCIÓN 2: Imagen de fondo */
 	background-image: url('../public/assets/img/bg.jpg'); /* Cambia esto por la ruta de tu imagen */
-	background-size: contain;          /* Hace que la imagen cubra toda la pantalla */
-	background-position: right;     /* Centra la imagen */
+	background-size: 100% auto;          /* Hace que la imagen cubra toda la pantalla */
+	background-position: top center;     /* Centra la imagen */
 	background-repeat: repeat;    /* Evita que la imagen se repita como mosaico */
 	background-attachment: fixed;    /* Deja el fondo fijo al hacer scroll */
 

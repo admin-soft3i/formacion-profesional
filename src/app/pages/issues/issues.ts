@@ -1,18 +1,19 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { ServiceTest, Course, Subject, Issue } from '../../../services/service-test';
+import { Component, inject, signal, OnInit, computed } from '@angular/core';
+import { ServiceTest, Course, Subject, Issue, Content } from '../../services/service-test';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-sissues',
-  imports: [],
-  templateUrl: './sissues.html',
-  styleUrl: './sissues.css',
+  selector: 'app-issues',
+  imports: [RouterLink],
+  templateUrl: './issues.html',
+  styleUrl: './issues.css',
 })
-export class Sissues implements OnInit {
-	// Inyectamos el servicio
+export class Issues implements OnInit {
 	private serviceTest = inject(ServiceTest);
 	protected listCourses = signal<Course[]>([]);
 	protected listSubjects = signal<Subject[]>([]);
 	protected listIssues = signal<Issue[]>([]);
+	protected listContents = signal<Content[]>([]);
 	
 	ngOnInit(): void {
 		this.serviceTest.getIssues().subscribe({
@@ -27,6 +28,10 @@ export class Sissues implements OnInit {
 			next: (datos) => this.listCourses.set(datos),
 			error: (err) => console.log('Error al leer el archivo JSON:', err)
 		});
+		this.serviceTest.getContents().subscribe({
+			next: (datos) => this.listContents.set(datos),
+			error: (err) => console.log('Error cargando JSON: ', err)
+		});		
 	}
 	
 	/**
@@ -47,5 +52,28 @@ export class Sissues implements OnInit {
 	getSubjectName(subjectId: number): string {
 		const subject = this.listSubjects().find(s => s.id === subjectId);
 		return subject ? subject.name : 'Asignatura no encontrada';
-	}	
+	}
+	
+	/**
+	 * Obtiene el contenido de la asignatura
+	 * @param issuetId
+	 * @returns 
+	 */
+	getContent(contentId: number | string | undefined) {
+		if (!contentId) return [];
+		return this.listContents().find(c => c.id === Number(contentId));
+	}
+
+	/**
+	 * Obtiene el contenido de la asignatura
+	 * @param issuetId
+	 * @returns 
+	 */
+	rcontent(issueId: number | string | undefined) { 
+		return computed(() => {
+			if (!issueId) return undefined;
+			return this.listContents().find(c => c.issue_id === Number(issueId));
+		});
+	}
+
 }

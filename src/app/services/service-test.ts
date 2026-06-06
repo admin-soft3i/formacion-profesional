@@ -8,6 +8,7 @@ export interface Course {
 	id: number;
 	degree: string;
 	name: string;
+	note: string;
 }
 
 // Object subject.

@@ -8,6 +8,7 @@ import { Ssubjects } from './pages/setting/ssubjects/ssubjects';
 
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Subjects } from './pages/subjects/subjects';
+import { Issues } from './pages/issues/issues';
 import { Contents } from './pages/contents/contents';
 import { SubjectTests } from './pages/subject-tests/subject-tests';
 
@@ -24,7 +25,8 @@ export const routes: Routes = [
 			{ path: 'stest', component: Stests }
 		]
 	}, 
-	{ path: 'subjects', component: Subjects }, 
+	{ path: 'subjects/:courseId', component: Subjects }, 
+	{ path: 'issues/:subjectId', component: Issues }, 
 	{ path: 'contents/:issueId/:issueName', component: Contents },
 	{ path: 'subject-test/:testId', component: SubjectTests }
 ];

@@ -1,12 +1,12 @@
-<header id="header" class="header d-flex align-items-center sticky-top p-0 shadow">
+<header id="header" class="header d-flex align-items-center sticky-top p-1 shadow mt-3 rounded-5 bg-white bg-opacity-50 mb-3">
     <div class="container-fluid position-relative d-flex align-items-center">
         <a [routerLink]="['/']" class="logo d-flex align-items-center">
             <img src="assets/img/logo.png" alt="logo">
-            <h3 class="sitename">
-				<span class="text-3i">Test de Formación Profesional</span>
+            <h3 class="sitename mt-3">
+				<span class="text-success">Test de Formación Profesional</span>
 			</h3>
         </a>
-        <nav id="navmenu" class="navmenu ms-auto">
+        <nav id="navmenu" class="navmenu ms-auto me-5">
             <ul>
                 <li>
 					<a [routerLink]="['/']" class="active">
@@ -23,8 +23,8 @@
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <a class="btn-getstarted" href="#">Sign in</a>
-        <a class="btn-header" href="#">Sign up</a>
+        <a class="btn btn-success rounded-5 me-2" href="#">Sign in</a>
+        <a class="btn btn-success rounded-5" href="#">Sign up</a>
     </div>
 </header>
 
