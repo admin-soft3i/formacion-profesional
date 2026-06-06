@@ -1,47 +1,78 @@
-<section class="text-muted p-3 bg-white bg-opacity-75 m-5 rounded">
-	<div class="container">
+<section class="text-muted p-3 pt-3 rounded-5 bg-white bg-opacity-75">
+    <div class="container-fluid">
         <div class="row">
-			<h2 class="border-bottom border-light pb-1">Tema: {{ issueName() }}</h2>
-			<div class="col-lg-6 border-bottom border-1 border-light mb-2 mt-4">
-				<h4>Adjuntos:</h4>
-				@for (attachment of rcontent()?.attachments; track attachment.id) {
-					<p>
-						<a [href]="attachment.file" target="_blank" rel="noopener noreferrer" class="btn-link rounded-pill me-2">
-							<i class="bi bi-file-earmark-arrow-down me-1"></i>
-							{{ attachment.name }}
+            <div class="col-lg-12 mb-5">
+				<div class="row">
+					<div class="col-lg-12 mb-3">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item fw-bold"><a [routerLink]="['/']">Inicio</a></li>
+								<li class="breadcrumb-item fw-bold">
+									<a [routerLink]="['/subjects', listSubjects()[0].course_id]">
+										{{ getCourseName(listSubjects()[0].course_id) }}
+									</a>
+								</li>
+								<li class="breadcrumb-item active fw-bold" aria-current="page">
+									<a [routerLink]="['/issues', listSubjects()[0].course_id]">
+										{{ getSubjectName(listSubjects()[0].course_id) }}
+									</a>
+								</li>
+								<li class="breadcrumb-item active fw-bold" aria-current="page">
+									{{ issueName() }}
+								</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="col-lg-12 mb-3">
+						<a [routerLink]="['/issues', issueId()]" class="btn btn-outline-success">
+							<i class="bi bi-arrow-left"></i> Volver
 						</a>
-					</p>
-				} @empty {
-					<p class="text-muted small">No hay archivos adjuntos para este tema.</p>
-				}
+					</div>
+					<h2 class="border-bottom border-light pb-1 h2">
+						{{ issueName() }}
+					</h2>
+					<div class="col-lg-6 mb-2 mt-4">
+						<h4 class="mb-4 border-bottom">Adjuntos.</h4>
+						@for (attachment of rcontent()?.attachments; track attachment.id) {
+							<p class="mb-3 text-success">
+								<a [href]="attachment.file" target="_blank" rel="noopener noreferrer" 
+										class="btn-link rounded-pill mb-2 h5 text-decoration-none">
+									<i class="{{ attachment.icon }} me-3 fs-3"></i>
+									{{ attachment.name }}
+								</a>
+							</p>
+						}
+					</div>
+					<div class="col-lg-6 mb-2 mt-4">
+						<h4 class="mb-4 border-bottom">Tests.</h4>
+						@for (test of rcontent()?.tests; track test.id) {
+							<a [routerLink]="['/subject-test', test.id]" 
+									class="btn btn-outline-secondary rounded-pill me-2 text-decoration-none">
+								<i class="{{ test.icon }} me-3 fs-3"></i>
+								{{ test.name }}
+							</a>
+						} @empty {
+							<p class="text-muted small">No hay archivos adjuntos para este tema.</p>
+						}
+					</div>
+					<div class="col-lg-12 mb-2 mt-4">
+						<h4>Contenido del tema.</h4>
+					</div>
+					<div class="d-flex flex-column flex-grow-1 overflow-hidden">
+						<div class="editor-toolbar bg-light border-bottom p-2 d-flex align-items-center gap-1 flex-wrap">
+							<button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Negrita"><b>B</b></button>
+							<button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Cursiva"><i>I</i></button>
+							<button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Subrayado"><u>U</u></button>
+							<span class="vr mx-1 my-auto" style="height: 20px;"></span> 
+						</div>
+						@if (rcontent(); as content) {
+							<textarea class="form-control border-0 flex-grow-1 p-3 shadow-none" rows="15"
+								placeholder="Escribe el contenido aquí..." 
+								style="resize: none; font-size: 1.5rem; outline: none;">{{ content.content }}</textarea>
+						}
+					</div>
+				</div>
 			</div>
-			<div class="col-lg-6 border-bottom border-1 border-light mb-2 mt-4">
-				<h4>Tests:</h4>
-				@for (test of rcontent()?.tests; track test.id) {
-					<a [routerLink]="['/subject-test', test.id]" class="btn btn-warning rounded-pill me-2">
-						<i class="bi bi-file-earmark-arrow-down me-1 fs-4"></i>
-						{{ test.name }}
-					</a>
-				} @empty {
-					<p class="text-muted small">No hay archivos adjuntos para este tema.</p>
-				}
-			</div>
-			<div class="col-lg-12 d-flex border-bottom border-1 border-light mb-2 mt-4">
-				<h4>Contenido del tema.</h4>
-			</div>
-            <div class="d-flex flex-column flex-grow-1 overflow-hidden">
-                <div class="editor-toolbar bg-light border-bottom p-2 d-flex align-items-center gap-1 flex-wrap">
-                    <button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Negrita"><b>B</b></button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Cursiva"><i>I</i></button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary px-2" title="Subrayado"><u>U</u></button>
-                    <span class="vr mx-1 my-auto" style="height: 20px;"></span> 
-                </div>
-                @if (rcontent(); as content) {
-                    <textarea class="form-control border-0 flex-grow-1 p-3 shadow-none" 
-                        placeholder="Escribe el contenido aquí..." 
-						style="resize: none; font-size: 1rem; outline: none;">{{ content.content }}</textarea>
-                }
-            </div>
 		</div>
 	</div>
 </section>

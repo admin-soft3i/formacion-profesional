@@ -27,6 +27,6 @@ export const routes: Routes = [
 	}, 
 	{ path: 'subjects/:courseId', component: Subjects }, 
 	{ path: 'issues/:subjectId', component: Issues }, 
+	{ path: 'subject-test/:testId', component: SubjectTests },
 	{ path: 'contents/:issueId/:issueName', component: Contents },
-	{ path: 'subject-test/:testId', component: SubjectTests }
 ];

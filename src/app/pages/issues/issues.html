@@ -1,128 +1,147 @@
 <section class="text-muted p-3 pt-3 rounded-5 bg-white bg-opacity-75 mb-5">
     <div class="container-fluid">
         <div class="row">
-			<div class="col-lg-12">
-				<div class="row">
-					<div class="col-lg-12 mb-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item fw-bold"><a [routerLink]="['/']">Inicio</a></li>
-								<li class="breadcrumb-item fw-bold">
-									<a [routerLink]="['/subjects', listSubjects()[0].course_id]">
-										{{ getCourseName(listSubjects()[0].course_id) }}
-									</a>
-								</li>
-								<li class="breadcrumb-item active fw-bold" aria-current="page">
-									{{ getSubjectName(listSubjects()[0].course_id) }}
-								</li>
-							</ol>
-						</nav>
-					</div>
-					<div class="col-lg-12 mb-3">
-						<a [routerLink]="['/subjects', subjectId()]" class="btn btn-outline-success">
-							<i class="bi bi-arrow-left"></i> Volver
-						</a>
-					</div>
-					<div class="col-lg-5 mb-3">
-						<h2 class="pb-1">
-							Asignatura: 
-							@if (listIssues().length > 0) {
-								<span>{{ getSubjectName(listSubjects()[0].course_id) }}.</span>
-							} @else {
-								<span>Sin asignatura.</span>
-							}
-						</h2>
-						<small>Selecciona un tema para ver su contenido y acceder a los resúmenes y test disponibles</small>
-					</div>
-					<div class="col-lg-7"></div>
-					<div class="col-lg-7 mb-3 bg-white rounded-5 px-5 py-3">
-						<div class="row">
-							<div class="col-4">
-								<table>
-									<tr>
-										<td><i class="bi bi-book me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
-										<td><span class="lead fw-bold">10</span><br><small>Temas</small></td>
-									</tr>
-								</table>
-							</div>
-							<div class="col-4">
-								<table>
-									<tr>
-										<td><i class="bi bi-journal-text me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
-										<td><span class="lead fw-bold">20</span><br><small>Test disponibles</small></td>
-									</tr>
-								</table>
-							</div>
-							<div class="col-4">
-								<table>
-									<tr>
-										<td><i class="bi bi-bullseye me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
-										<td><span class="lead fw-bold">2</span><br><small>Simulacros finales</small></td>
-									</tr>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12">
-						<div class="accordion accordion-flush text-success bg-transparent rounded-5 shadow" id="accordionIssues">
-							@for (issue of rissues(); track issue.id) {
-								<div class="accordion-item rounded-5 bg-transparent">
-									<h2 class="accordion-header rounded-5">
-										<button class="accordion-button collapsed text-success-emphasis fw-bold rounded-5" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
-											<span class="me-3 span-circle bg-success text-white rounded-circle fw-bold text-center pt-2">
-												{{ issue.id }}
-											</span> 
-											{{ issue.name }}
-										</button>
-									</h2>
-									<div id="collapse-{{issue.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIssues">
-										<div class="accordion-body">
-											<div class="col-lg-12 mb-2 h6 px-5 pt-5 text-success fw-bold bg-white rounded-5">
-												@for (attachment of rcontent(issue.id)()?.attachments; track attachment.id) {
-													<div class="d-flex px-5">
-														<div class="d-flex">
-															<i class="{{attachment.icon}} me-3 fs-3"></i>
-															<figure>
-																<blockquote class="blockquote">
-																	<p>{{ attachment.name }}</p>
-																</blockquote>
-																<figcaption class="blockquote-footer">
-																	{{ attachment.note }}
-																</figcaption>
-															</figure>
-														</div>
-														<a [href]="attachment.file" target="_blank" rel="noopener noreferrer" class="me-2 ms-auto">
-															Abrir <i class="bi bi-arrow-right fw-bold"></i>
-														</a>
-													</div>
-												}
-												@for (test of rcontent(issue.id)()?.tests; track test.id) {
-													<div class="d-flex px-5">
-														<div class="d-flex">
-															<i class="{{test.icon}} me-3 fs-3"></i>
-															<figure>
-																<blockquote class="blockquote">
-																	<p>{{ test.name }}</p>
-																</blockquote>
-																<figcaption class="blockquote-footer">
-																	{{ test.note }}
-																</figcaption>
-															</figure>
-														</div>
-														<a [routerLink]="['/subject-test', test.id]" class="me-2 ms-auto">
-															Iniciar <i class="bi bi-arrow-right fw-bold"></i>
-														</a>
-													</div>
-												}
-											</div>
-										</div>
-									</div>
-								</div>
-							}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12 mb-3 px-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item fw-bold">
+                                    <a [routerLink]="['/']">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item fw-bold">
+                                    <a [routerLink]="['/subjects', listSubjects()[0].course_id]">
+                                        {{ getCourseName(listSubjects()[0].course_id) }}
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active fw-bold" aria-current="page">
+                                    {{ getSubjectName(listSubjects()[0].course_id) }}
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-lg-12 mb-3 px-3">
+                        <a [routerLink]="['/subjects', subjectId()]" class="btn btn-outline-success">
+                            <i class="bi bi-arrow-left"></i> Volver
+                        </a>
+                    </div>
+                    <div class="col-lg-5 mb-3 px-3">
+                        <h2 class="pb-1">
+                            @if (listIssues().length > 0) {
+                                <span>{{ getSubjectName(listSubjects()[0].course_id) }}.</span>
+                            } @else {
+                                <span>Sin asignatura.</span>
+                            }
+                        </h2>
+                        <small>Selecciona un tema para ver su contenido y acceder a los resúmenes y test disponibles</small>
+                    </div>
+                    <div class="col-lg-7"></div>
+                    
+                    <div class="col-lg-7 mb-3 bg-white rounded-5 ms-0 ms-md-3 px-3 px-sm-5 py-3">
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-4">
+                                <table class="w-100">
+                                    <tr>
+                                        <td><i class="bi bi-book me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+                                        <td><span class="lead fw-bold border">10</span><br><small>Temas</small></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <table class="w-100">
+                                    <tr>
+                                        <td><i class="bi bi-journal-text me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+                                        <td><span class="lead fw-bold">20</span><br><small>Test disponibles</small></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <table class="w-100">
+                                    <tr>
+                                        <td><i class="bi bi-bullseye me-3 fs-1 border border-2 border-success rounded-circle p-2 bg-success-subtle"></i></td>
+                                        <td><span class="lead fw-bold">2</span><br><small>Simulacros finales</small></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="accordion accordion-flush text-success bg-transparent rounded-5" id="accordionIssues">
+                            @for (issue of rissues(); track issue.id) {
+                                <div class="accordion-item rounded-5 bg-transparent">
+                                    <h2 class="accordion-header rounded-5">
+                                        <button class="accordion-button collapsed text-success-emphasis fw-bold rounded-5 d-flex align-items-center" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
+                                            <span class="me-3 span-circle bg-success text-white rounded-circle fw-bold text-center pt-2 flex-shrink-0">
+                                                {{ issue.id }}
+                                            </span> 
+                                            <span class="text-wrap">{{ issue.name }}</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse-{{issue.id}}" class="accordion-collapse collapse" data-bs-parent="#accordionIssues">
+                                        <div class="accordion-body p-2 p-sm-3">
+                                            <div class="col-lg-12 mb-2 h6 text-success fw-bold bg-white rounded-5 py-2">
+                                                @if (rcontent(issue.id)()?.id) {
+                                                    <div class="d-flex px-3 px-md-5 text-muted py-2 mb-4 border-bottom align-items-center">
+                                                        <span class="h5 mb-0">Contenido del tema.</span>
+                                                        <a [routerLink]="['/contents', rcontent(issue.id)()?.id, issue.name]" 
+                                                                class="me-2 ms-auto btn btn-sm btn-outline-secondary rounded-pill">
+                                                            <i class="bi bi-layout-text-window me-1"></i> <span class="d-none d-sm-inline">Contenido</span>
+                                                        </a>
+                                                    </div>
+                                                } @else {
+                                                    <div class="d-flex px-3 px-md-5 text-muted py-2 mb-4">
+                                                        <span class="pt-2 h5">Contenido aún no desarrollado.</span>
+                                                    </div>
+                                                }
+                                                
+                                                @for (attachment of rcontent(issue.id)()?.attachments; track attachment.id) {
+                                                    <div class="d-flex px-3 px-md-5 ms-0 ms-md-5 mb-3 align-items-center">
+                                                        <div class="d-flex align-items-center match-width">
+                                                            <i class="{{attachment.icon}} me-3 fs-3 flex-shrink-0"></i>
+                                                            <figure class="mb-0">
+                                                                <blockquote class="blockquote mb-0">
+                                                                    <p class="mb-0 text-wrap fs-6 mb-3">{{ attachment.name }}</p>
+                                                                </blockquote>
+                                                                <figcaption class="blockquote-footer mb-0 small">
+                                                                    {{ attachment.note }}
+                                                                </figcaption>
+                                                            </figure>
+                                                        </div>
+                                                        <a [href]="attachment.file" target="_blank" rel="noopener noreferrer" 
+                                                                class="me-2 ms-auto btn btn-sm btn-link text-decoration-none text-nowrap">
+                                                            Abrir <i class="bi bi-arrow-right fw-bold"></i>
+                                                        </a>
+                                                    </div>
+                                                }
+                                                
+                                                @for (test of rcontent(issue.id)()?.tests; track test.id) {
+                                                    <div class="d-flex px-3 px-md-5 ms-0 ms-md-5 mb-3 align-items-center">
+                                                        <div class="d-flex align-items-center match-width">
+                                                            <i class="{{test.icon}} me-3 fs-3 flex-shrink-0"></i>
+                                                            <figure class="mb-0">
+                                                                <blockquote class="blockquote mb-0">
+                                                                    <p class="mb-0 text-wrap fs-6 mb-3">{{ test.name }}</p>
+                                                                </blockquote>
+                                                                <figcaption class="blockquote-footer mb-0 small">
+                                                                    {{ test.note }}
+                                                                </figcaption>
+                                                            </figure>
+                                                        </div>
+                                                        <a [routerLink]="['/subject-test', test.id]" class="me-2 ms-auto btn btn-sm btn-link text-decoration-none text-nowrap">
+                                                            Iniciar <i class="bi bi-arrow-right fw-bold"></i>
+                                                        </a>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
