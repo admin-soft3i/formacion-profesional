@@ -1,4 +1,14 @@
 [
-	{ "id": 1, "degree": "Curse 1º", "name": "Itinerario personal para la empleabilidad I" },
-	{ "id": 2, "degree": "Curse 2º", "name": "Digitalizacion aplicada a los sectores productivos" }
+	{ 
+		"id": 1, 
+		"degree": "Curse 1º", 
+		"name": "Itinerario personal para la empleabilidad I", 
+		"note": "Accede a las asignaturas y practica con test para reforzar y aprender los contenidos" 
+	},
+	{ 
+		"id": 2, 
+		"degree": "Curse 2º", 
+		"name": "Digitalizacion aplicada a los sectores productivos", 
+		"note": "Accede a las asignaturas y practica con test para reforzar y aprender los contenidos" 
+	}
 ]

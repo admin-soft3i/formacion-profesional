@@ -26,12 +26,12 @@
 						<h2 class="border-bottom border-light pb-1">Temas.</h2>
 					</div>
 					<div class="col-lg-12">
-						<div class="accordion accordion-flush" id="accordionIssues">
-							@for (issue of listIssues(); track issue.id) {
+						<div class="accordion accordion-flush text-success rounded-pill shadow" id="accordionIssues">
+							@for (issue of rissues(); track issue.id) {
 								<div class="accordion-item">
 									<h2 class="accordion-header">
-										<button class="accordion-button collapsed text-success-emphasis fw-bold fw-normal fs-5" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
-											<span class="me-3 px-3 py-2 bg-success text-white rounded-circle fw-bold">
+										<button class="accordion-button collapsed text-success-emphasis fw-bold" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse-' + issue.id" aria-expanded="false" [attr.aria-controls]="'collapse-' + issue.id">
+											<span class="me-3 span-circle bg-success text-white rounded-circle fw-bold text-center pt-2">
 												{{ issue.id }}
 											</span> 
 											{{ issue.name }}
@@ -43,7 +43,11 @@
 												@for (attachment of rcontent(issue.id)()?.attachments; track attachment.id) {
 													<div class="d-flex mb-4 ps-5">
 														<div>
-															<i class="bi bi-file-earmark-arrow-down me-1 fs-4"></i>
+															@if (attachment.id === 1) {
+																<i class="bi bi-book-half me-3 fs-3"></i>
+															} @else {
+																<i class="bi bi-book-fill me-3 fs-3"></i>
+															}
 															{{ attachment.name }}
 														</div>
 														<a [href]="attachment.file" target="_blank" rel="noopener noreferrer" class="me-2 ms-auto">
@@ -54,7 +58,7 @@
 												@for (test of rcontent(issue.id)()?.tests; track test.id) {
 													<div class="d-flex mb-4 ps-5">
 														<div>
-															<i class="bi bi-file-earmark-arrow-down me-1 fs-4"></i> 
+															<i class="bi bi-file-earmark-medical me-3 fs-3"></i>
 															{{ test.name }}
 														</div>
 														<a [routerLink]="['/subject-test', test.id]" class="me-2 ms-auto">

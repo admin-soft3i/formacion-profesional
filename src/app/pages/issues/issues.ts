@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit, computed } from '@angular/core';
+import { Component, inject, signal, OnInit, computed, input } from '@angular/core';
 import { ServiceTest, Course, Subject, Issue, Content } from '../../services/service-test';
 import { RouterLink } from '@angular/router';
 
@@ -10,6 +10,9 @@ import { RouterLink } from '@angular/router';
 })
 export class Issues implements OnInit {
 	private serviceTest = inject(ServiceTest);
+	
+	subjectId = input<string>();
+	
 	protected listCourses = signal<Course[]>([]);
 	protected listSubjects = signal<Subject[]>([]);
 	protected listIssues = signal<Issue[]>([]);
@@ -63,6 +66,17 @@ export class Issues implements OnInit {
 		if (!contentId) return [];
 		return this.listContents().find(c => c.id === Number(contentId));
 	}
+	
+	/**
+	 * Obtiene el contenido de la asignatura
+	 * @param issuetId
+	 * @returns 
+	 */
+	rissues = computed(() => {
+		const id = this.subjectId();
+		if (!id) return undefined;
+		return this.listIssues().filter(i => i.subject_id === Number(id));
+	})
 
 	/**
 	 * Obtiene el contenido de la asignatura
