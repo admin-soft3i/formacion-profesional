@@ -10,15 +10,11 @@
 								<li class="breadcrumb-item fw-bold">{{ getCourseName(courseId()) }}</li>
 							</ol>
 						</nav>
-						
-						<h4 class="border-bottom border-light pb-1">
-							Curso: {{ courseId() }}
-							@if (listSubjects().length > 0) {
-								<span>{{ getCourseName(courseId()) }}.</span>
-							} @else {
-								<span>Sin temas asociados.</span>
-							}
-						</h4>
+					</div>
+					<div class="col-lg-12 mb-3">
+						<a [routerLink]="['/']" class="btn btn-outline-success">
+							<i class="bi bi-arrow-left"></i> Volver
+						</a>
 					</div>
 					<div class="col-lg-12 mb-3">
 						<h2 class="border-bottom border-light pb-1">Asignaturas.</h2>

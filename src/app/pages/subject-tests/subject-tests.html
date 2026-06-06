@@ -23,17 +23,19 @@
 							</ol>
 						</nav>
 					</div>
-					
-					<h2 class="pb-1">{{ rsubjectTest()?.title }}</h2>
+					<div class="col-lg-12 mb-3">
+						<a [routerLink]="['/issues', listSubjects()[0].course_id]" class="btn btn-outline-success">
+							<i class="bi bi-arrow-left"></i> Volver
+						</a>
+					</div>
 					<div class="d-flex">
-						<h2 class="pb-1">{{ rsubjectTest()?.content }}.</h2>
+						<h2 class="pb-1">{{ rsubjectTest()?.title }}</h2>
 						<div class="ms-auto">
 							<button class="btn btn-warning fw-bold shadow">
-								<i class="bi bi-check2-all fs-1"></i> Solucionado
+								<i class="bi bi-check2-all fs-3"></i> Solucionado
 							</button>
 						</div>
 					</div>
-					
 					<div class="col-lg-8 mb-2 mt-4">
 						<h4 class="mb-3 fw-bold text-success">Preguntas:</h4>
 						<hr class="border-success border border-3">
