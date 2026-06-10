@@ -10,5 +10,12 @@
 		"degree": "Curse 2º", 
 		"name": "Digitalizacion aplicada a los sectores productivos", 
 		"note": "Accede a las asignaturas y practica con test para reforzar y aprender los contenidos" 
+	},
+	{ 
+		"id": 3, 
+		"degree": "Curse 3º", 
+		"name": "Curse 3", 
+		"note": " test para reforzar y aprender los contenidos" 
 	}
+  
 ]
